@@ -215,12 +215,14 @@ main:has(#match:not([hidden])){width:min(100%,600px);padding:0}
     grid-template-rows:minmax(0,1fr);
     gap:clamp(13px,2vw,32px);align-items:center;
   }
+  #match .match-stage>.board-frame{width:100%}
   @supports (width:1cqh){
-    .match-stage{container-type:size;grid-template-columns:minmax(0,min(58%,100cqh)) minmax(0,1fr)}
+    .match-stage{container-type:size;grid-template-columns:auto minmax(0,1fr)}
+    #match .match-stage>.board-frame{width:min(58cqw,100cqh)}
   }
   #match .match-stage>.board-frame{
     order:0;grid-column:1;grid-row:1;align-self:center;justify-self:center;
-    width:100%;min-width:0;min-height:0;
+    min-width:0;min-height:0;
     aspect-ratio:1;
     grid-template-columns:clamp(17px,2.5vw,35px) minmax(0,1fr);
     grid-template-rows:minmax(0,1fr) clamp(17px,2.5vw,35px);
