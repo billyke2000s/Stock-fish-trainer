@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Publish first device-test release
+      - name: Publish layout fix
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create v1.0.0 downloads/Stockfish-Trainer.apk --target "$GITHUB_SHA" --title 'Stockfish Trainer 1.0.0' --notes 'First Android device-test build. Download Stockfish-Trainer.apk to play generated games offline, get hints, and retry mistakes against Stockfish.'
+          gh release create v1.0.1 downloads/Stockfish-Trainer.apk --target "$GITHUB_SHA" --title 'Stockfish Trainer 1.0.1' --notes 'Fixes collapsed empty ranks and status bar overlap. This debug build uses a new signing key. Uninstall v1.0.0 before installing.'
