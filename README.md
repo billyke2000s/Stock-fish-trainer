@@ -2,11 +2,13 @@
 
 **An offline chess coach for Android.** Play a fresh game against Stockfish, try a different move when you slip, and see the reply if you decide to play it anyway.
 
-[**Download the Android APK**](../../releases/download/v1.0.6/Stockfish-Trainer.apk) · [All releases](../../releases) · [APK in this repository](downloads/Stockfish-Trainer.apk)
+[**Download the Android APK**](../../releases/download/v1.1.0/Stockfish-Trainer.apk) · [All releases](../../releases) · [APK in this repository](downloads/Stockfish-Trainer.apk)
+
+The main menu has its own original theme, *Velvet Gambit*. Choose **Player vs CPU** for a standard game as White, or **Player vs Player** to pass the phone after each move. **Menu → Resume game** returns to the current board.
 
 ### Your first game
 
-1. Open the app. The trainer picks one of eight opening positions and assigns you White or Black.
+1. Choose **Train** from the main menu. The trainer picks one of eight opening positions and assigns you White or Black.
 2. Tap a piece to highlight its legal destinations, then tap the square you want.
 3. If the coach spots a mistake, try a different move. **Hint** reveals a suggested move. **Play my move** lets you see Stockfish’s reply.
 4. Tap **New game** for a fresh opening. The move list below the board tracks the current game.

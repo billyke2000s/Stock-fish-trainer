@@ -14,4 +14,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create v1.0.6 downloads/Stockfish-Trainer.apk --target "$GITHUB_SHA" --title 'Stockfish Trainer 1.0.6' --notes 'Selecting a piece lights up every legal capture destination in amber. Ordinary moves still show a dot. Installs over v1.0.5.'
+          gh release create v1.1.0 downloads/Stockfish-Trainer.apk --target "$GITHUB_SHA" --title 'Stockfish Trainer 1.1.0' --notes 'Main menu with Velvet Gambit, an original jazz-funk theme. Choose Train, Player vs CPU or local pass-and-play. Installs over v1.0.6.'

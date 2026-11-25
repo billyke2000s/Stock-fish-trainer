@@ -1,4 +1,4 @@
-"""Run python3 music/compose.py between|window|amber from the repository root."""
+"""Run python3 music/compose.py between|window|amber|gambit from the repository root."""
 import sys
 import subprocess
 import ctypes as ct
@@ -10,6 +10,7 @@ import numpy as np
 rate = 32000
 song = sys.argv[1]
 bpm, meter, lead, answer, title = {
+    "gambit": (116,4,56,11,"Velvet Gambit"),
     "between": (76,4,11,0,"Between Moves"),
     "window": (108,3,0,24,"Window Seat"),
     "amber": (84,4,26,11,"Amber After Dark"),
@@ -30,7 +31,7 @@ synth = bind("new_fluid_synth", ptr, ptr)(settings)
 font = bind("fluid_synth_sfload", integer, ptr, ct.c_char_p, integer)(synth, b"/usr/share/sounds/sf2/TimGM6mb.sf2", 1)
 assert font >= 0
 program = bind("fluid_synth_program_select", integer, ptr, integer, integer, integer, integer)
-for chan, patch in enumerate([0, 32, lead, answer]):
+for chan, patch in enumerate([4 if song=='gambit' else 0, 33 if song=='gambit' else 32, lead, answer]):
     program(synth, chan, font, 0, patch)
 on = bind("fluid_synth_noteon", integer, ptr, integer, integer, integer)
 off = bind("fluid_synth_noteoff", integer, ptr, integer, integer)
@@ -56,12 +57,17 @@ elif song == 'amber':
     changes = [(45,[56,59,61,64]),(42,[52,57,61,68]),(47,[54,57,61,62]),(40,[56,59,62,66]),
                (37,[52,56,59,63]),(42,[52,58,61,65]),(47,[54,57,61,62]),(40,[56,59,62,65])]
     pitches = [[64,61,59],[57,61],[66,69,68],[64,62],[63,64,68],[70,66],[62,61,57],[59]]
+if song == 'gambit':
+    changes = [(38,[53,57,60,64]),(43,[53,59,62,69]),(36,[52,55,59,62]),(45,[55,61,64,70]),
+               (38,[53,57,60,65]),(46,[56,62,65,69]),(40,[55,59,62,66]),(45,[55,61,65,70])]
+    pitches = [[69,72,76],[74,71],[67,71,74],[73,69],[77,76,72],[74,70],[67,71,74],[73,69]]
 if song != 'between':
     motifs = []
     for i, phrase in enumerate(pitches):
         offsets = ([.5,1.5,2.25] if i%2==0 else [0,1.75,2.4]) if meter==3 else ([.67,2,2.67] if i%2==0 else [0,2.67,3.33])
         motifs.append([(t,p,min((offsets[k+1] if k+1<len(phrase) else meter)-t-.09,1.8)) for k,(t,p) in enumerate(zip(offsets,phrase))])
 bridge_charts = {
+    'gambit': [(41,[57,60,64,67]),(46,[56,62,65,69]),(39,[55,58,62,65]),(44,[54,60,63,67]),(43,[53,58,62,65]),(36,[52,58,62,67]),(40,[55,58,62,65]),(45,[55,61,65,70])],
     'between': [(46,[57,62,65,69]),(39,[55,61,65,68]),(44,[55,60,63,67]),(37,[53,59,63,66]),
                 (43,[53,58,62,69]),(38,[54,60,64,69]),(43,[58,62,65,69]),(36,[58,61,64,67])],
     'window': [(44,[55,60,63,67]),(37,[53,59,63,68]),(42,[53,58,61,65]),(47,[51,57,61,66]),
@@ -89,6 +95,11 @@ for section, bars in sections:
         if not last and section!='intro':
             note(pos+meter-1,.76,1,root+7,65)
             if section=='solo' and meter==4: note(pos+1,.8,1,root+4,57)
+        if song=='gambit' and section not in ('intro','coda'):
+            for t in (0,2.5): note(pos+t,.14,9,36,65)
+            for t in (1,3): note(pos+t,.12,9,38,58)
+            for t in (.5,1.5,2.5,3.5): note(pos+t,.08,9,42,38)
+            note(pos+1.5,.32,1,root+12,65)
         accents=[.03] if section in ('intro','coda') else ([1.04,2.18] if meter==3 else [.035,2.66])
         for offbeat in accents:
             for j,p in enumerate(chord):

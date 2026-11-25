@@ -17,3 +17,15 @@
 #note:empty{display:none}
 
 .sq.capture{background:#ffcb70;box-shadow:inset 0 0 0 3px #a65010}
+
+[hidden]{display:none!important}
+.marquee{padding:2rem 1rem;text-align:center;border-radius:20px;background:radial-gradient(ellipse at top,#326557,#12362e);color:#fff8df}
+.crest{font:5rem/1 Georgia,serif;color:#edc582}
+.marquee h1{font:2.8rem Georgia,serif;margin:.5rem 0 1rem}
+#theme{background:#173d33;border-color:#849d86;color:#ffedc7}
+#lobby nav{display:grid;gap:.65rem;margin-top:1rem}
+#lobby nav button{text-align:left;padding:1rem 1.15rem;border-radius:12px}
+#lobby nav b,#lobby nav span{display:block}
+#lobby nav b{font:bold 1.4rem Georgia,serif}
+#lobby nav span{font-size:.92rem;margin-top:.25rem}
+#mode-title{font-size:clamp(1.1rem,5vw,1.7rem);margin:0}

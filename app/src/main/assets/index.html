@@ -1,5 +1,13 @@
 <!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stockfish Trainer</title><link rel="stylesheet" href="style.css"><main>
-<header><h1>Chess studio</h1><button id="fresh">New game</button></header>
+<section id="lobby" aria-label="Main menu">
+<div class="marquee"><div class="crest" aria-hidden="true">♞</div><h1>Chess studio</h1><button id="theme" aria-pressed="false">♪ Play Velvet Gambit</button></div>
+<nav aria-label="Game modes">
+<button id="resume" hidden>Resume game</button>
+<button data-mode="train"><b>Train</b><span>Practise with Stockfish hints and retries</span></button>
+<button data-mode="cpu"><b>Player vs CPU</b><span>Play a full game against Stockfish</span></button>
+<button data-mode="local"><b>Player vs Player</b><span>Two players on this phone</span></button>
+</nav></section>
+<section id="match" hidden><header><button id="menu">Menu</button><h1 id="mode-title">Train</h1><button id="fresh">New game</button></header>
 <section class="coach-chat" aria-label="Coach message">
   <div class="avatar" aria-hidden="true">🐟</div>
   <div class="conversation">
@@ -12,4 +20,4 @@
 <div class="board-frame"><div id="ranks" aria-hidden="true"></div><div id="board" aria-label="Chessboard"></div><div id="files" aria-hidden="true"></div></div>
 <div class="actions"><button id="hint">Hint</button><button id="keep" hidden>Play my move</button><select id="promo" aria-label="Promotion piece"><option value="q">Promote to queen</option><option value="r">Rook</option><option value="b">Bishop</option><option value="n">Knight</option></select></div>
 <button id="music" type="button" aria-pressed="false" style="margin-top:12px">♫ Music off</button> <select id="song" aria-label="Soundtrack"><option value="between">Between Moves</option><option value="window">Window Seat</option><option value="amber">Amber After Dark</option></select>
-<h3>Game moves</h3><p id="moves"></p></main><script src="chess.js"></script><script src="trainer.js"></script><script src="music.js"></script></html>
+<h3>Game moves</h3><p id="moves"></p></section></main><script src="chess.js"></script><script src="trainer.js"></script><script src="music.js"></script></html>
