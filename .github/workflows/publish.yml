@@ -14,4 +14,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create v1.0.3 downloads/Stockfish-Trainer.apk --target "$GITHUB_SHA" --title 'Stockfish Trainer 1.0.3' --notes 'Stockfish now sends coaching tips in a chat bubble with a fish avatar. The board stays in place when messages change. Installs over v1.0.2.'
+          gh release create v1.0.4 downloads/Stockfish-Trainer.apk --target "$GITHUB_SHA" --title 'Stockfish Trainer 1.0.4' --notes 'Adds Between Moves, an original offline jazz loop. Tap Music to listen. Installs over v1.0.3.'

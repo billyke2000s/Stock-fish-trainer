@@ -27,7 +27,7 @@ public class Trainer extends Activity {
                 String path = r.getUrl().getPath();
                 if ("trainer.invalid".equals(r.getUrl().getHost()) && path != null && path.matches("/[a-z.]+")) {
                     try {
-                        String mime = path.endsWith(".js") ? "application/javascript" : path.endsWith(".css") ? "text/css" : "text/html";
+                        String mime = path.endsWith(".ogg") ? "audio/ogg" : path.endsWith(".js") ? "application/javascript" : path.endsWith(".css") ? "text/css" : "text/html";
                         return new WebResourceResponse(mime, "UTF-8", getAssets().open(path.substring(1)));
                     } catch (IOException ignored) {}
                 }

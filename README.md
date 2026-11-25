@@ -2,7 +2,7 @@
 
 **An offline chess coach for Android.** Play a fresh game against Stockfish, try a different move when you slip, and see the reply if you decide to play it anyway.
 
-[**Download the Android APK**](../../releases/download/v1.0.3/Stockfish-Trainer.apk) · [All releases](../../releases) · [APK in this repository](downloads/Stockfish-Trainer.apk)
+[**Download the Android APK**](../../releases/download/v1.0.4/Stockfish-Trainer.apk) · [All releases](../../releases) · [APK in this repository](downloads/Stockfish-Trainer.apk)
 
 ### Your first game
 
@@ -10,6 +10,8 @@
 2. Tap a piece to highlight its legal destinations, then tap the square you want.
 3. If the coach spots a mistake, try a different move. **Hint** reveals a suggested move. **Play my move** lets you see Stockfish’s reply.
 4. Tap **New game** for a fresh opening. The move list below the board tracks the current game.
+
+Tap **♫ Music** for *Between Moves*, an original 16-bar jazz loop. Your music preference is saved on this device.
 
 ### On your phone
 
