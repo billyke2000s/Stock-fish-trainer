@@ -14,4 +14,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create v1.0.1 downloads/Stockfish-Trainer.apk --target "$GITHUB_SHA" --title 'Stockfish Trainer 1.0.1' --notes 'Fixes collapsed empty ranks and status bar overlap. This debug build uses a new signing key. Uninstall v1.0.0 before installing.'
+          gh release create v1.0.2 downloads/Stockfish-Trainer.apk --target "$GITHUB_SHA" --title 'Stockfish Trainer 1.0.2' --notes 'Adds file letters below the board and rank numbers on the left. Coordinates follow the player’s orientation. Installs over v1.0.1.'

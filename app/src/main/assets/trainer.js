@@ -11,11 +11,23 @@ function message(title, note='') {
 function draw() {
     const board = el('board');
     board.innerHTML = '';
+    el('ranks').textContent = '';
+    el('files').textContent = '';
     const targets = selected ? game.moves({square:selected, verbose:true}).map(m=>m.to) : [];
     for (let i=0;i<64;i++) {
         const n = human==='b' ? 63-i : i;
         const file=n%8, row=Math.floor(n/8);
         const square='abcdefgh'[file]+(8-row), piece=game.get(square);
+        if (i % 8 === 0) {
+            const rank = document.createElement('span');
+            rank.textContent = square[1];
+            el('ranks').appendChild(rank);
+        }
+        if (i >= 56) {
+            const fileLabel = document.createElement('span');
+            fileLabel.textContent = square[0];
+            el('files').appendChild(fileLabel);
+        }
         const button=document.createElement('button');
         button.className=['sq',(file+row)%2?'dark':'',piece?.color==='w'?'white':'',square===selected?'selected':'',targets.includes(square)?'legal':''].join(' ');
         button.textContent=piece?glyph[piece.type]+'\uFE0E':'';

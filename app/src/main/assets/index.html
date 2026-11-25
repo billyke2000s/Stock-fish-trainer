@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stockfish Trainer</title><link rel="stylesheet" href="style.css"><main>
 <header><h1>Chess studio</h1><button id="fresh">New game</button></header>
 <section class="card"><small>STOCKFISH COACH</small><h2 id="status" aria-live="polite">Starting engine…</h2><p id="note"></p></section>
-<div id="board" aria-label="Chessboard"></div>
+<div class="board-frame"><div id="ranks" aria-hidden="true"></div><div id="board" aria-label="Chessboard"></div><div id="files" aria-hidden="true"></div></div>
 <div class="actions"><button id="hint">Hint</button><button id="keep" hidden>Play my move</button><select id="promo" aria-label="Promotion piece"><option value="q">Promote to queen</option><option value="r">Rook</option><option value="b">Bishop</option><option value="n">Knight</option></select></div>
 <h3>Game moves</h3><p id="moves"></p></main><script src="chess.js"></script><script src="trainer.js"></script></html>
