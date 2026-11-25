@@ -1,7 +1,43 @@
 'use strict';
 const el = id => document.getElementById(id);
 const game = new Chess();
-const glyph = {k:'♚',q:'♛',r:'♜',b:'♝',n:'♞',p:'♟'};
+const SVG_NS = 'http://www.w3.org/2000/svg';
+function pieceArt(type) {
+    const svg = document.createElementNS(SVG_NS, 'svg');
+    svg.setAttribute('viewBox','0 0 64 64');
+    svg.setAttribute('class','chess-piece');
+    svg.setAttribute('aria-hidden','true');
+    const use = document.createElementNS(SVG_NS, 'use');
+    use.setAttribute('href','#piece-'+type);
+    svg.appendChild(use);
+    return svg;
+}
+function showHistory() {
+    const moves = game.history(), list = el('moves');
+    if (list.dataset.history === moves.join(' ')) return;
+    list.dataset.history = moves.join(' ');
+    list.textContent = '';
+    if (!moves.length) {
+        const empty=document.createElement('span');
+        empty.className='move-empty';
+        empty.textContent='Your moves will appear here.';
+        list.appendChild(empty);
+        return;
+    }
+    for (let i=0;i<moves.length;i+=2) {
+        const row=document.createElement('div');
+        row.className='move-row';
+        row.setAttribute('role','listitem');
+        [String(i/2+1)+'.',moves[i],moves[i+1]||''].forEach((value,j)=>{
+            const cell=document.createElement('span');
+            if(j===0)cell.className='move-number';
+            cell.textContent=value;
+            row.appendChild(cell);
+        });
+        list.appendChild(row);
+    }
+    list.scrollTop=list.scrollHeight;
+}
 const openings = [['e4','e5'],['e4','c5'],['d4','d5'],['e4','c6'],['Nf3','d5'],['c4','e5'],['d4','Nf6'],['e4','e6']];
 let mode;
 let worker, generation = 0, human, selected, pending, best, ready, previousOpening;
@@ -37,14 +73,14 @@ function draw() {
         }
         const button=document.createElement('button');
         button.className=['sq',(file+row)%2?'dark':'',piece?.color==='w'?'white':'',square===selected?'selected':'',targets.get(square) || ''].join(' ');
-        button.textContent=piece?glyph[piece.type]+'\uFE0E':'';
+        if (piece) button.appendChild(pieceArt(piece.type));
         button.setAttribute('aria-label',square+(piece?' '+(piece.color==='w'?'white ':'black ')+({k:'king',q:'queen',r:'rook',b:'bishop',n:'knight',p:'pawn'})[piece.type]:'')+(targets.get(square)==='capture'?' (capture)':''));
         button.onclick=()=>tap(square);
         board.appendChild(button);
     }
     el('hint').disabled=!ready;
     el('keep').hidden=!pending || !ready;
-    el('moves').textContent=game.history().map((m,i)=>i%2?m:(1+i/2)+'. '+m).join(' ');
+    showHistory();
 }
 function uci(m) { return m.from+m.to+(m.promotion||''); }
 function object(move) {return {from:move.slice(0,2),to:move.slice(2,4),promotion:move[4]};}
@@ -140,6 +176,7 @@ document.querySelectorAll('[data-mode]').forEach(button=>{
     button.onclick=()=>{
         mode=button.dataset.mode;
         el('mode-title').textContent=button.querySelector('b').textContent;
+        el('mode-tagline').textContent=mode==='train'?'PRACTISE · LEARN · IMPROVE':mode==='cpu'?'CHALLENGE THE ENGINE':'LOCAL · PASS AND PLAY';
         document.querySelector('.sender').textContent=mode==='local'?'Game': 'Stockfish';
         screen(false);
         start();

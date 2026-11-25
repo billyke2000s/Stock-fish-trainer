@@ -10,7 +10,8 @@ public class Trainer extends Activity {
         super.onCreate(state);
         WebView view = new WebView(this);
         android.widget.FrameLayout frame = new android.widget.FrameLayout(this);
-        frame.setBackgroundColor(0xfff4f1e8);
+        frame.setBackgroundColor(0xff101a17);
+        view.setBackgroundColor(0xff101a17);
         frame.addView(view);
         frame.setOnApplyWindowInsetsListener(new android.view.View.OnApplyWindowInsetsListener() {
             @Override public android.view.WindowInsets onApplyWindowInsets(android.view.View root, android.view.WindowInsets insets) {
@@ -19,7 +20,9 @@ public class Trainer extends Activity {
             return insets.consumeSystemWindowInsets();
             }
         });
-        getWindow().getDecorView().setSystemUiVisibility(android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        getWindow().getDecorView().setSystemUiVisibility(0);
+        getWindow().setStatusBarColor(0xff101a17);
+        getWindow().setNavigationBarColor(0xff101a17);
         view.getSettings().setJavaScriptEnabled(true);
         view.getSettings().setDomStorageEnabled(true);
         view.setWebViewClient(new WebViewClient() {
