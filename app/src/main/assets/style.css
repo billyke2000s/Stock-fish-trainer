@@ -278,22 +278,23 @@ main:has(#match:not([hidden])){width:min(100%,600px);padding:0}
   .move-row{padding:3px 1px}
 }
 
-/* Photo-rendered, isolated pieces from the approved landscape concept. */
-#match .chess-piece-sprite{display:block;width:100%;height:100%;pointer-events:none;background-image:url("pieces.webp");background-size:600% 200%;background-repeat:no-repeat;filter:drop-shadow(0 1px 1px #0008)}
+/* Refined original vector artwork: crisp, solid silhouettes and two green tones. */
 #match .sq:not(.dark):not(.capture){
-  background-color:#e5c791;
-  background-image:linear-gradient(132deg,#fff0d0 0%,#e9cd9b 45%,#d6b47d 100%);
-  box-shadow:inset 0 0 0 .5px #8e6b3430;
+  background-color:#a6b99e;
+  background-image:linear-gradient(135deg,#b3c4a8 0%,#a2b499 55%,#91a68d 100%);
+  box-shadow:inset 0 0 0 .5px #3a59422c;
 }
 #match .sq.dark:not(.capture){
-  background-color:#123d2b;
+  background-color:#153c2c;
+  background-image:linear-gradient(145deg,#244e38 0%,#153c2c 60%,#103223 100%);
 }
-#match .sq.selected{box-shadow:inset 0 0 0 3px #ffdc66,inset 0 0 12px #e5ad3b9e!important}
-#match .sq.legal:after{background:#477a52;box-shadow:0 0 0 2px #e1f2bd,0 0 5px #0d241a;opacity:.92;pointer-events:none}
+#match .chess-piece{display:block;width:88%;height:88%;max-width:88%;max-height:88%;fill:url(#onyx-piece);stroke:#e1c18a;stroke-width:1.65;filter:drop-shadow(0 1.5px 1px #0009);color:#c0a36b}
+#match .sq.white .chess-piece{fill:url(#ivory-piece);stroke:#63482b;stroke-width:1.5;color:#8b6235}
+#match .chess-piece .piece-detail{stroke-width:1.2}
+#match .sq.selected{box-shadow:inset 0 0 0 3px #ffe37d,inset 0 0 12px #e5ad3b9e!important}
+#match .sq.legal:after{background:#285d3b;box-shadow:0 0 0 2px #e1f2bd,0 0 5px #0d241a;opacity:.92;pointer-events:none}
 #match .sq.dark.legal:after{background:#d1f7bd;box-shadow:0 0 0 2px #25563a,0 0 5px #9de8a0}
-#match .decor{display:block;aspect-ratio:1;background-image:url("pieces.webp");background-size:600% 200%;background-repeat:no-repeat;filter:drop-shadow(0 8px 14px #000);opacity:.72}
-#match .decor-left{background-position:20% 0%}
-#match .decor-right{background-position:80% 0%}
+#match .decor{fill:url(#onyx-piece);stroke:#bd9a56;stroke-width:1.3;filter:drop-shadow(0 8px 14px #000);opacity:.48}
 #match .board-frame{--coord:1.15rem;grid-template-columns:var(--coord) minmax(0,1fr);grid-template-rows:minmax(0,1fr) var(--coord);padding:5px;aspect-ratio:1}
 #match .board-frame #board{width:100%;height:100%;min-width:0;min-height:0;aspect-ratio:1}
 #match #ranks,#match #files{min-height:0;min-width:0}

@@ -63,4 +63,4 @@ jobs:
           "$aapt" dump badging Stockfish-Trainer.apk > package.txt
           grep -F "versionName='$version'" package.txt
           grep -F "name='uk.trainer.chess'" package.txt
-          gh release create "v$version" Stockfish-Trainer.apk --target "$GITHUB_SHA" --title "Stockfish Trainer $version" --notes "High-contrast cream and emerald board, original sculpted concept-art pieces, larger square landscape board, fullscreen landscape and compact sidebar. Game engine, move highlighting and music retained. Debug-signed APK."
+          gh release create "v$version" Stockfish-Trainer.apk --target "$GITHUB_SHA" --title "Stockfish Trainer $version" --notes "Restored sharp vector chess pieces with solid onyx fills and distinct king and queen shapes. High-contrast sage and deep emerald board, retaining the enlarged landscape layout and fullscreen support. Game rules, coaching and music unchanged. Debug-signed APK."
