@@ -7,6 +7,7 @@ let worker, generation = 0, human, selected, pending, best, ready, previousOpeni
 function message(title, note='') {
     el('status').textContent = title;
     el('note').textContent = note;
+    el('message-body').scrollTop = 0;
 }
 function draw() {
     const board = el('board');
