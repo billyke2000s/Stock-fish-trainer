@@ -73,3 +73,34 @@ main:has(#lobby:not([hidden])){padding:0;width:min(100%,600px)}
 @media(max-width:350px){#lobby{padding:12px;gap:12px}#lobby nav{gap:9px}.training-copy{max-width:76%}.training-desc{font-size:.78rem}.tile-number{font-size:.5rem}}
 @media(min-width:500px){#lobby nav{gap:16px}}
 @media(prefers-reduced-motion:reduce){#lobby nav button{transition:none}}
+
+/* Restore the exact v1.1.1 knight, pawn and board composition. */
+.lobby-hero{position:relative;isolation:isolate;overflow:hidden;min-height:clamp(220px,34vh,340px);display:flex;align-items:flex-end;border-radius:24px;border:1px solid #536253;background:linear-gradient(145deg,#32483b,#192a22 55%,#111e18)}
+.hero-art{position:absolute;inset:0;overflow:hidden;z-index:-1;pointer-events:none}
+.hero-art:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#16251eea 0%,#16251e88 43%,transparent 75%),linear-gradient(0deg,#14221ae8,transparent 68%)}
+.hero-board{position:absolute;width:330px;height:330px;right:-100px;top:72px;transform:rotate(-27deg) skew(15deg,10deg);background:conic-gradient(#a58a57 25%,#263e31 0 50%,#a58a57 0 75%,#263e31 0) 0 0/70px 70px;opacity:.28;box-shadow:0 0 0 7px #b29762}
+.hero-piece,.hero-pawn{position:absolute;font-family:Georgia,'Times New Roman',serif;line-height:1;color:#e6c58b;text-shadow:0 10px 15px #0007}
+.hero-piece{right:4%;top:3%;font-size:clamp(150px,45vw,230px);transform:rotate(-9deg)}
+.hero-pawn{right:1%;bottom:12%;font-size:clamp(80px,22vw,120px);color:#8fa995;opacity:.55}
+.hero-copy{padding:24px 20px;position:relative}
+.hero-copy h1{font:normal clamp(2.65rem,10vw,4rem)/.99 Georgia,serif;margin:12px 0;color:#fff6e2;letter-spacing:-.045em}
+.hero-copy h1 span{color:#e3bd77}
+.hero-copy p{margin:12px 0 0;font-size:.87rem;color:#c5d0c6}
+/* Preserve the newer playable grid beneath the restored artwork. */
+#lobby{gap:14px}
+.lobby-hero{flex:none}
+#lobby nav{flex:none;grid-template-rows:none;grid-auto-rows:auto;gap:10px;align-content:start}
+#lobby nav .training-tile{grid-column:1/-1;grid-row:auto;flex-direction:row;align-items:center;justify-content:flex-start;gap:12px;min-height:70px;padding:12px 14px;background:#dcc08a;color:#17251e;border-color:#e5cc99;border-radius:16px}
+.training-tile .mode-copy{flex:1}
+.training-tile .mode-copy>span{color:#39483c}
+.training-tile .mode-icon{background:#b79a64;color:#17251e;font:1.85rem/1 Georgia,serif;width:44px;height:44px}
+.training-tile .mode-arrow{color:#314238}
+.mode-heading{grid-row:auto;margin:4px 2px 0}
+#lobby nav .play-tile{grid-row:auto;min-height:146px;grid-template-rows:auto minmax(60px,1fr) auto;gap:6px;border-radius:18px}
+.tile-illustration{min-height:60px}
+.tile-piece{font-size:clamp(58px,18vw,94px)}
+.secondary-piece{font-size:clamp(38px,12vw,65px)}
+.kings{font-size:clamp(53px,16vw,84px)}
+.other-king{font-size:clamp(48px,15vw,78px)}
+#lobby nav #resume{grid-row:auto;min-height:54px;padding:8px 12px}
+@media(max-width:350px){.hero-copy{padding:18px 14px}.mode-copy>span{font-size:.71rem}}
