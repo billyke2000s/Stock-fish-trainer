@@ -34,10 +34,10 @@
 </section>
 <section id="match" hidden>
 <div class="match-atmosphere" aria-hidden="true"><svg class="decor decor-left" viewBox="0 0 64 64"><use href="#piece-q"/></svg><svg class="decor decor-right" viewBox="0 0 64 64"><use href="#piece-n"/></svg></div>
-<header class="match-header"><button id="menu"><span aria-hidden="true">☰</span> Menu</button><div class="match-brand"><span aria-hidden="true">♞</span><span>CHESS STUDIO</span></div><button id="fresh"><span aria-hidden="true">＋</span> New game</button></header>
+<div class="match-top"><header class="match-header"><button id="menu"><span aria-hidden="true">☰</span> Menu</button><div class="match-brand"><span aria-hidden="true">♞</span><span>CHESS STUDIO</span></div><button id="fresh"><span aria-hidden="true">＋</span> New game</button></header>
 <div class="match-title"><span class="title-flourish" aria-hidden="true">❧</span><h1 id="mode-title">Train</h1><span class="title-flourish mirror" aria-hidden="true">❧</span></div>
 <div id="mode-tagline" class="match-tagline">PRACTISE · LEARN · IMPROVE</div>
-<section class="coach-chat" aria-label="Coach message">
+</div><div class="match-stage"><div class="board-frame"><div id="ranks" aria-hidden="true"></div><div id="board" aria-label="Chessboard"></div><div id="files" aria-hidden="true"></div></div><aside class="match-sidebar" aria-label="Game information and controls"><section class="coach-chat" aria-label="Coach message">
   <div class="avatar" aria-hidden="true"><span class="avatar-online"></span></div>
   <div class="conversation">
     <strong class="sender">Stockfish</strong>
@@ -46,7 +46,7 @@
     </div></div>
   </div>
 </section>
-<div class="board-frame"><div id="ranks" aria-hidden="true"></div><div id="board" aria-label="Chessboard"></div><div id="files" aria-hidden="true"></div></div>
+
 <div class="actions"><button id="hint"><span aria-hidden="true">♧</span> Hint</button><button id="keep" hidden>Play my move</button><select id="promo" aria-label="Promotion piece"><option value="q">Promote to queen</option><option value="r">Rook</option><option value="b">Bishop</option><option value="n">Knight</option></select></div>
 <div class="music-actions"><button id="music" type="button" aria-pressed="false">♫ Music off</button><select id="song" aria-label="Soundtrack"><option value="between">Between Moves</option><option value="window">Window Seat</option><option value="amber">Amber After Dark</option></select>
-</div><section class="history-panel" aria-label="Game moves"><h3><span aria-hidden="true">☷</span> Game moves</h3><div id="moves" role="list"></div></section></section></main><script src="chess.js"></script><script src="trainer.js"></script><script src="music.js"></script></html>
+</div><section class="history-panel" aria-label="Game moves"><h3><span aria-hidden="true">☷</span> Game moves</h3><div id="moves" role="list"></div></section></aside></div></section></main><script src="chess.js"></script><script src="trainer.js"></script><script src="music.js"></script></html>

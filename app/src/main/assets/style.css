@@ -170,3 +170,108 @@ main:has(#match:not([hidden])){width:min(100%,600px);padding:0}
 .move-empty{font-size:.8rem;color:#afbaac;padding:8px 2px}
 @media(max-width:350px){#match{padding:10px;gap:8px}.match-header{gap:4px}#match button:not(.sq){padding:7px}.match-brand span:last-child{letter-spacing:.09em}#match .avatar{width:45px;height:45px}#match .coach-chat{gap:7px}}
 @media(prefers-reduced-motion:reduce){#match button:not(.sq){transition:none}}
+
+/* One live board and one coach panel; orientation changes only presentation. */
+.match-top,.match-stage{display:flex;flex-direction:column;gap:10px;min-width:0}
+.match-sidebar{display:contents}
+.match-stage>.board-frame{order:1}
+.match-stage .coach-chat{order:0}
+.match-stage .actions{order:2}
+.match-stage .music-actions{order:3}
+.match-stage .history-panel{order:4}
+@media (orientation:landscape) and (min-width:480px){
+  main:has(#match:not([hidden])){width:min(100%,1500px);padding:0}
+  #match{
+    --match-head-room:130px;
+    box-sizing:border-box;
+    min-height:320px;
+    height:100vh;height:100dvh;
+    padding:clamp(10px,1.7vh,18px) clamp(12px,3.1vw,44px) clamp(12px,2.4vh,26px);
+    gap:clamp(9px,1.8vh,20px);
+    background:
+      radial-gradient(ellipse at 18% 106%,#28513d 0%,transparent 38%),
+      radial-gradient(ellipse at 87% 0%,#20402e 0%,transparent 38%),
+      linear-gradient(140deg,#080e0b,#10251b 47%,#080f0c 82%);
+  }
+  .match-top{
+    display:grid;grid-template-columns:minmax(100px,1fr) minmax(0,2.5fr) minmax(100px,1fr);
+    grid-template-rows:auto auto auto;gap:2px 14px;flex:none;align-items:center;
+  }
+  .match-top .match-header{display:contents}
+  #match #menu{grid-column:1;grid-row:1/4;justify-self:start;align-self:start}
+  #match #fresh{grid-column:3;grid-row:1/4;justify-self:end;align-self:start}
+  .match-top .match-brand{grid-column:2;grid-row:1;display:flex;justify-content:center;align-items:center;gap:9px}
+  .match-brand span:first-child{font-size:clamp(1.35rem,4.2vh,2.5rem)}
+  .match-brand span:last-child{font-size:clamp(.57rem,1.6vh,.9rem);letter-spacing:.2em}
+  .match-top .match-title{grid-column:2;grid-row:2;margin:0;gap:12px}
+  #match #mode-title{font-size:clamp(1.45rem,5.7vh,3.7rem);line-height:1.02}
+  .title-flourish{font-size:clamp(1rem,4vh,2.6rem)}
+  .match-top .match-tagline{grid-column:2;grid-row:3;margin:2px 0 0;font-size:clamp(.48rem,1.2vh,.72rem);letter-spacing:.18em}
+  .match-stage{
+    flex:1;min-height:0;min-width:0;
+    display:grid;
+    grid-template-columns:minmax(0,min(58%,calc(100vh - var(--match-head-room)))) minmax(0,1fr);
+    grid-template-columns:minmax(0,min(58%,calc(100dvh - var(--match-head-room)))) minmax(0,1fr);
+    grid-template-rows:minmax(0,1fr);
+    gap:clamp(13px,2vw,32px);align-items:center;
+  }
+  @supports (width:1cqh){
+    .match-stage{container-type:size;grid-template-columns:minmax(0,min(58%,100cqh)) minmax(0,1fr)}
+  }
+  #match .match-stage>.board-frame{
+    order:0;grid-column:1;grid-row:1;align-self:center;justify-self:center;
+    width:100%;min-width:0;min-height:0;
+    aspect-ratio:1;
+    grid-template-columns:clamp(17px,2.5vw,35px) minmax(0,1fr);
+    grid-template-rows:minmax(0,1fr) clamp(17px,2.5vw,35px);
+    padding:clamp(4px,1vw,12px);
+    border:2px solid #efcb82;border-radius:clamp(9px,1.5vw,20px);
+    background:linear-gradient(145deg,#72502c 0%,#101b15 8%,#101b15 90%,#63451d 100%);
+    box-shadow:0 0 0 2px #7d5830,inset 0 0 0 1px #fff0a8a0,0 0 20px #d6a34c47,0 12px 26px #000a;
+  }
+  #match .board-frame #board{width:100%;height:100%;min-height:0;min-width:0;aspect-ratio:1;align-self:center}
+  #match #ranks,#match #files{font-size:clamp(.7rem,2.6vh,1.15rem)}
+  #match .chess-piece{max-width:90%;max-height:90%}
+  .match-sidebar{
+    grid-column:2;grid-row:1;align-self:stretch;
+    display:flex;flex-direction:column;gap:clamp(8px,1.7vh,18px);min-width:0;min-height:0;
+    overflow:auto;overscroll-behavior:contain;padding:2px 3px 3px;
+  }
+  #match .coach-chat{height:clamp(95px,19vh,145px);min-height:clamp(95px,19vh,145px);flex:none;gap:clamp(8px,1.2vw,16px)}
+  #match .avatar{width:clamp(44px,10vh,90px);height:clamp(44px,10vh,90px);margin-top:24px}
+  #match .sender{font-size:clamp(.72rem,2vh,1.05rem);padding:4px 10px}
+  #match #status{font:600 clamp(1.05rem,3.2vh,1.65rem)/1.15 Georgia,serif}
+  #match #note{font-size:clamp(.8rem,2.35vh,1.1rem);line-height:1.35}
+  #match #message-body{padding:clamp(8px,1.4vh,15px)}
+  #match .actions,#match .music-actions{flex:none;display:flex;flex-wrap:wrap;gap:clamp(7px,1.2vw,16px);margin:0}
+  #match button:not(.sq),#match select{font-size:clamp(.78rem,2.3vh,1.1rem);min-height:clamp(38px,6vh,52px)}
+  #match #hint,#match #music{min-width:0;flex:0 0 34%}
+  #match .actions select,#match .music-actions select{flex:1 1 55%;min-width:0}
+  #match #keep{order:2;flex:0 0 100%}
+  #match .history-panel{flex:1;min-height:80px;margin:0;display:flex;flex-direction:column;padding:clamp(9px,1.8vh,18px);overflow:hidden}
+  #match .history-panel h3{font-size:clamp(1rem,3.2vh,1.6rem);flex:none}
+  #match #moves{flex:1;max-height:none;min-height:0;align-content:start;font-size:clamp(.82rem,2.4vh,1.1rem)}
+  #match .decor-left{left:11%;top:5%;width:clamp(70px,15vh,140px);transform:rotate(-10deg);opacity:.52}
+  #match .decor-right{right:13%;top:3%;width:clamp(75px,17vh,150px);transform:rotate(10deg);opacity:.55}
+  .match-atmosphere:after{content:'';position:absolute;inset:auto -8% -22% -8%;height:42%;background:radial-gradient(ellipse at 16% 40%,#2860447a,transparent 58%),linear-gradient(174deg,transparent 18%,#132d21 45%,#0b1912 50%,#214934 68%,#09150e 83%);transform:rotate(-4deg);opacity:.65}
+}
+@media (orientation:landscape) and (min-width:480px) and (max-height:470px){
+  #match{--match-head-room:93px;padding:7px 12px 9px;gap:7px}
+  .match-top{grid-template-columns:minmax(78px,1fr) minmax(0,2.3fr) minmax(92px,1fr);gap:1px 8px}
+  .match-top .match-brand span:first-child{font-size:1.15rem}
+  .match-top .match-brand span:last-child{font-size:.55rem}
+  #match #mode-title{font-size:1.5rem}
+  .match-top .match-tagline{font-size:.46rem;letter-spacing:.12em;margin:0}
+  #match .title-flourish{font-size:1.2rem}
+  #match button:not(.sq),#match select{min-height:34px;font-size:.76rem;padding:5px 8px;border-radius:10px}
+  #match .coach-chat{height:76px;min-height:76px;gap:7px}
+  #match .avatar{width:36px;height:36px;margin-top:17px}
+  #match .sender{font-size:.62rem;padding:2px 7px;margin-bottom:2px}
+  #match #message-body{padding:5px 8px}
+  #match #status{font-size:.95rem}
+  #match #note{font-size:.72rem;line-height:1.25}
+  #match .match-sidebar{gap:6px}
+  #match .history-panel{min-height:55px;padding:7px 9px;border-radius:11px}
+  #match .history-panel h3{font-size:1rem;margin-bottom:4px}
+  .move-row{padding:3px 1px}
+}
