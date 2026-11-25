@@ -15,3 +15,5 @@
 #status{font:600 1.05rem/1.25 system-ui,sans-serif;margin:0}
 #note{font-size:.95rem;line-height:1.3;margin:.25rem 0 0}
 #note:empty{display:none}
+
+.sq.capture{background:#ffcb70;box-shadow:inset 0 0 0 3px #a65010}

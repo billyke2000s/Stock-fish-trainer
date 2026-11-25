@@ -14,7 +14,12 @@ function draw() {
     board.innerHTML = '';
     el('ranks').textContent = '';
     el('files').textContent = '';
-    const targets = selected ? game.moves({square:selected, verbose:true}).map(m=>m.to) : [];
+    const targets = new Map();
+    if (selected) {
+        for (const move of game.moves({square:selected, verbose:true})) {
+            targets.set(move.to, move.captured ? 'capture' : 'legal');
+        }
+    }
     for (let i=0;i<64;i++) {
         const n = human==='b' ? 63-i : i;
         const file=n%8, row=Math.floor(n/8);
@@ -30,9 +35,9 @@ function draw() {
             el('files').appendChild(fileLabel);
         }
         const button=document.createElement('button');
-        button.className=['sq',(file+row)%2?'dark':'',piece?.color==='w'?'white':'',square===selected?'selected':'',targets.includes(square)?'legal':''].join(' ');
+        button.className=['sq',(file+row)%2?'dark':'',piece?.color==='w'?'white':'',square===selected?'selected':'',targets.get(square) || ''].join(' ');
         button.textContent=piece?glyph[piece.type]+'\uFE0E':'';
-        button.setAttribute('aria-label',square+(piece?' '+(piece.color==='w'?'white ':'black ')+({k:'king',q:'queen',r:'rook',b:'bishop',n:'knight',p:'pawn'})[piece.type]:''));
+        button.setAttribute('aria-label',square+(piece?' '+(piece.color==='w'?'white ':'black ')+({k:'king',q:'queen',r:'rook',b:'bishop',n:'knight',p:'pawn'})[piece.type]:'')+(targets.get(square)==='capture'?' (capture)':''));
         button.onclick=()=>tap(square);
         board.appendChild(button);
     }

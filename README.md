@@ -2,7 +2,7 @@
 
 **An offline chess coach for Android.** Play a fresh game against Stockfish, try a different move when you slip, and see the reply if you decide to play it anyway.
 
-[**Download the Android APK**](../../releases/download/v1.0.5/Stockfish-Trainer.apk) · [All releases](../../releases) · [APK in this repository](downloads/Stockfish-Trainer.apk)
+[**Download the Android APK**](../../releases/download/v1.0.6/Stockfish-Trainer.apk) · [All releases](../../releases) · [APK in this repository](downloads/Stockfish-Trainer.apk)
 
 ### Your first game
 
