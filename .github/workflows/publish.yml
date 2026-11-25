@@ -28,6 +28,7 @@ jobs:
       RUN_ID: ${{ inputs.run_id || '45563936690' }}
       VERSION: ${{ inputs.version || '1.1.1' }}
     steps:
+      - uses: actions/checkout@v5
       - name: Download verified successful build
         shell: bash
         run: |
@@ -55,4 +56,4 @@ jobs:
             echo "Release already exists; refusing to overwrite it."
             exit 1
           fi
-          gh release create "v$VERSION" Stockfish-Trainer.apk --target "$BUILD_SHA" --title "Stockfish Trainer $VERSION" --notes "Redesigned dark green and gold main menu, original Quiet Opening piano-led soundtrack, and repaired Android CI. Debug-signed test APK; an existing installation signed with a different key may require uninstalling before installing this version."
+          gh release create "v$VERSION" Stockfish-Trainer.apk --target "$GITHUB_SHA" --title "Stockfish Trainer $VERSION" --notes "Redesigned dark green and gold main menu, original Quiet Opening piano-led soundtrack, and repaired Android CI. Built from commit $BUILD_SHA. Debug-signed test APK; an existing installation signed with a different key may require uninstalling before installing this version."
