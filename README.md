@@ -2,7 +2,7 @@
 
 **An offline chess coach for Android.** Play a fresh game against Stockfish, try a different move when you slip, and see the reply if you decide to play it anyway.
 
-[**Download the Android APK**](../../releases/download/v1.1.0/Stockfish-Trainer.apk) · [All releases](../../releases) · [APK in this repository](downloads/Stockfish-Trainer.apk)
+[**Download the Android APK**](../../releases/latest/download/Stockfish-Trainer.apk) · [All releases](../../releases)
 
 The redesigned main menu has its own original piano theme, *Quiet Opening*. Choose **Player vs CPU** for a standard game as White, or **Player vs Player** to pass the phone after each move. **Menu → Resume game** returns to the current board.
 
