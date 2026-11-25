@@ -1,16 +1,13 @@
 'use strict';
 const el = id => document.getElementById(id);
 const game = new Chess();
-const SVG_NS = 'http://www.w3.org/2000/svg';
-function pieceArt(type) {
-    const svg = document.createElementNS(SVG_NS, 'svg');
-    svg.setAttribute('viewBox','0 0 64 64');
-    svg.setAttribute('class','chess-piece');
-    svg.setAttribute('aria-hidden','true');
-    const use = document.createElementNS(SVG_NS, 'use');
-    use.setAttribute('href','#piece-'+type);
-    svg.appendChild(use);
-    return svg;
+// The two rows of the original concept's sprite are black and white.
+function pieceArt(type, color) {
+    const art=document.createElement('span');
+    art.className='chess-piece-sprite';
+    art.setAttribute('aria-hidden','true');
+    art.style.backgroundPosition=('kqrbnp'.indexOf(type)*20)+'% '+(color==='w'?'100%':'0%');
+    return art;
 }
 function showHistory() {
     const moves = game.history(), list = el('moves');
@@ -73,7 +70,7 @@ function draw() {
         }
         const button=document.createElement('button');
         button.className=['sq',(file+row)%2?'dark':'',piece?.color==='w'?'white':'',square===selected?'selected':'',targets.get(square) || ''].join(' ');
-        if (piece) button.appendChild(pieceArt(piece.type));
+        if (piece) button.appendChild(pieceArt(piece.type,piece.color));
         button.setAttribute('aria-label',square+(piece?' '+(piece.color==='w'?'white ':'black ')+({k:'king',q:'queen',r:'rook',b:'bishop',n:'knight',p:'pawn'})[piece.type]:'')+(targets.get(square)==='capture'?' (capture)':''));
         button.onclick=()=>tap(square);
         board.appendChild(button);
