@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
     paths: ['app/**', 'music/**', '.github/workflows/android.yml']
+permissions:
+  contents: write
 jobs:
   android:
     runs-on: ubuntu-24.04
@@ -42,3 +44,23 @@ jobs:
         with:
           name: Stockfish-Trainer-APK
           path: app/build/outputs/apk/debug/*.apk
+      - name: Publish verified APK on main
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          version=$(awk -F "'" '/versionName/{print $2}' app/build.gradle)
+          [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          if gh release view "v$version" >/dev/null 2>&1; then
+            echo "Version already published; not overwriting existing release."
+            exit 0
+          fi
+          cp app/build/outputs/apk/debug/app-debug.apk Stockfish-Trainer.apk
+          aapt=$(find "$ANDROID_HOME/build-tools" -name aapt -type f | sort -V | tail -1)
+          "$aapt" dump badging Stockfish-Trainer.apk > package.txt
+          grep -F "versionName='$version'" package.txt
+          grep -F "name='uk.trainer.chess'" package.txt
+          gh release create "v$version" Stockfish-Trainer.apk --target "$GITHUB_SHA" --title "Stockfish Trainer $version" --notes "New playable tile layout with integrated chess artwork, side-by-side CPU and local modes, and the existing original soundtrack. Debug-signed APK."
