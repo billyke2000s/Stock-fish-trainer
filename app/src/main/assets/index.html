@@ -1,12 +1,19 @@
 <!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stockfish Trainer</title><link rel="stylesheet" href="style.css"><main>
 <section id="lobby" aria-label="Main menu">
-<div class="marquee"><div class="crest" aria-hidden="true">♞</div><h1>Chess studio</h1><button id="theme" aria-pressed="false">♪ Play Velvet Gambit</button></div>
+<div class="lobby-top"><div class="wordmark"><span class="brand-mark">♞</span><span>CHESS STUDIO</span></div><button id="theme" aria-pressed="false" aria-label="Play menu music">♪</button></div>
+<div class="lobby-hero">
+<div class="hero-art" aria-hidden="true"><div class="hero-board"></div><span class="hero-piece">♞</span><span class="hero-pawn">♟</span></div>
+<div class="hero-copy"><span class="eyebrow">THE ART OF CHESS</span><h1>Every move<br>matters<span>.</span></h1><p>Think ahead. Play your way.</p></div>
+</div>
+<div class="mode-heading"><span>CHOOSE YOUR GAME</span><span>01 — 03</span></div>
 <nav aria-label="Game modes">
-<button id="resume" hidden>Resume game</button>
-<button data-mode="train"><b>Train</b><span>Practise with Stockfish hints and retries</span></button>
-<button data-mode="cpu"><b>Player vs CPU</b><span>Play a full game against Stockfish</span></button>
-<button data-mode="local"><b>Player vs Player</b><span>Two players on this phone</span></button>
-</nav></section>
+<button id="resume" hidden><span class="mode-icon" aria-hidden="true">▶</span><span class="mode-copy"><b>Resume game</b><span>Return to your current board</span></span><span class="mode-arrow" aria-hidden="true">›</span></button>
+<button data-mode="train"><span class="mode-icon" aria-hidden="true">♘</span><span class="mode-copy"><b>Train</b><span>Improve with your Stockfish coach</span></span><span class="mode-arrow" aria-hidden="true">›</span></button>
+<button data-mode="cpu"><span class="mode-icon" aria-hidden="true">♜</span><span class="mode-copy"><b>Player vs CPU</b><span>Challenge the engine</span></span><span class="mode-arrow" aria-hidden="true">›</span></button>
+<button data-mode="local"><span class="mode-icon pair" aria-hidden="true">♟♙</span><span class="mode-copy"><b>Player vs Player</b><span>Pass and play on one device</span></span><span class="mode-arrow" aria-hidden="true">›</span></button>
+</nav>
+<footer class="lobby-footer"><span><i></i> OFFLINE PLAY</span><span>STOCKFISH ENGINE</span></footer>
+</section>
 <section id="match" hidden><header><button id="menu">Menu</button><h1 id="mode-title">Train</h1><button id="fresh">New game</button></header>
 <section class="coach-chat" aria-label="Coach message">
   <div class="avatar" aria-hidden="true">🐟</div>

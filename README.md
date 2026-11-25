@@ -4,7 +4,7 @@
 
 [**Download the Android APK**](../../releases/download/v1.1.0/Stockfish-Trainer.apk) · [All releases](../../releases) · [APK in this repository](downloads/Stockfish-Trainer.apk)
 
-The main menu has its own original theme, *Velvet Gambit*. Choose **Player vs CPU** for a standard game as White, or **Player vs Player** to pass the phone after each move. **Menu → Resume game** returns to the current board.
+The redesigned main menu has its own original piano theme, *Quiet Opening*. Choose **Player vs CPU** for a standard game as White, or **Player vs Player** to pass the phone after each move. **Menu → Resume game** returns to the current board.
 
 ### Your first game
 
@@ -30,6 +30,8 @@ With Android SDK 35, JDK 17 and Gradle 8.9 installed, run:
 
 ```sh
 bash prepare-assets.sh
+# Install python3-numpy, libfluidsynth3, timgm6mb-soundfont and ffmpeg first.
+python3 music/opening.py
 gradle assembleDebug
 ```
 

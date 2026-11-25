@@ -2,13 +2,15 @@
 (() => {
     const button = document.getElementById('music');
     const themeButton = document.getElementById('theme');
-    const theme = new Audio('gambit.ogg');
+    const theme = new Audio('opening.ogg');
     theme.loop = true;
-    theme.volume = 0.45;
+    theme.volume = 0.48;
     let themeEnabled = localStorage.getItem('menuMusic') !== 'off';
     const inMenu = () => !document.getElementById('lobby').hidden;
     function themeLabel() {
-        themeButton.textContent = theme.paused ? '♪ Play Velvet Gambit' : 'Ⅱ Pause Velvet Gambit';
+        themeButton.textContent = theme.paused ? '♪' : 'Ⅱ';
+        themeButton.setAttribute('aria-label', theme.paused ? 'Play menu music' : 'Pause menu music');
+        themeButton.title = theme.paused ? 'Play Quiet Opening' : 'Pause Quiet Opening';
         themeButton.setAttribute('aria-pressed', String(!theme.paused));
     }
     theme.onplaying = themeLabel;
@@ -75,6 +77,7 @@
     document.addEventListener('click', event => {
         interacted = true;
         if (event.target !== button && player.paused) play();
+        if (inMenu() && event.target !== themeButton && themeEnabled && theme.paused) menuAudio();
     });
     document.addEventListener('screenchange', () => {
         interacted = true;

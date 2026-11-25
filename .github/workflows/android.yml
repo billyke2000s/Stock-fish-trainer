@@ -1,5 +1,9 @@
 name: Build trainer APK
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['app/**', 'music/**', '.github/workflows/android.yml']
 jobs:
   android:
     runs-on: ubuntu-latest
@@ -14,6 +18,11 @@ jobs:
         with:
           gradle-version: '8.9'
       - run: bash prepare-assets.sh
+      - name: Render original menu soundtrack
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-numpy libfluidsynth3 timgm6mb-soundfont ffmpeg
+          /usr/bin/python3 music/opening.py
       - run: gradle assembleDebug
       - uses: actions/upload-artifact@v4
         with:
