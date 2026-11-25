@@ -278,7 +278,7 @@ main:has(#match:not([hidden])){width:min(100%,600px);padding:0}
   .move-row{padding:3px 1px}
 }
 
-/* Refined original vector artwork: crisp, solid silhouettes and two green tones. */
+/* High-contrast sage and emerald squares; original v1.1.6 piece styling above. */
 #match .sq:not(.dark):not(.capture){
   background-color:#a6b99e;
   background-image:linear-gradient(135deg,#b3c4a8 0%,#a2b499 55%,#91a68d 100%);
@@ -288,9 +288,6 @@ main:has(#match:not([hidden])){width:min(100%,600px);padding:0}
   background-color:#153c2c;
   background-image:linear-gradient(145deg,#244e38 0%,#153c2c 60%,#103223 100%);
 }
-#match .chess-piece{display:block;width:88%;height:88%;max-width:88%;max-height:88%;fill:url(#onyx-piece);stroke:#e1c18a;stroke-width:1.65;filter:drop-shadow(0 1.5px 1px #0009);color:#c0a36b}
-#match .sq.white .chess-piece{fill:url(#ivory-piece);stroke:#63482b;stroke-width:1.5;color:#8b6235}
-#match .chess-piece .piece-detail{stroke-width:1.2}
 #match .sq.selected{box-shadow:inset 0 0 0 3px #ffe37d,inset 0 0 12px #e5ad3b9e!important}
 #match .sq.legal:after{background:#285d3b;box-shadow:0 0 0 2px #e1f2bd,0 0 5px #0d241a;opacity:.92;pointer-events:none}
 #match .sq.dark.legal:after{background:#d1f7bd;box-shadow:0 0 0 2px #25563a,0 0 5px #9de8a0}
